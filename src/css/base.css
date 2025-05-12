@@ -16,7 +16,16 @@
 }
 
 body {
-  background-color: #4d4d4d;
+  /* background-color: #4d4d4d; */
+  background: radial-gradient(
+    circle,
+    #6b6b6bb7 5%,
+
+    #484747bd 25%,
+    #2e2b2bb5 45%,
+    #353333d5 70%,
+    #2c2c2c 100%
+  );
   display: flex;
   flex-direction: column;
   min-width: 100vw;

@@ -5,10 +5,11 @@ export const simpleLight = new SimpleLightbox('.js-gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-const gallery = document.querySelector('.js-gallery');
+
+const galleryEl = document.querySelector('.js-gallery');
 
 export function createGallery(images) {
-  return images
+  const markup = images
     .map(
       ({
         tags,
@@ -47,6 +48,8 @@ export function createGallery(images) {
             </li>`
     )
     .join('');
+  galleryEl.insertAdjacentHTML('beforeend', markup);
+  return;
 }
 
 export function showElement(element) {
@@ -58,5 +61,5 @@ export function hideElement(element) {
 }
 
 export function clearGallery() {
-  gallery.innerHTML = '';
+  galleryEl.innerHTML = '';
 }
