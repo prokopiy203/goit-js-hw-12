@@ -22,7 +22,7 @@ form.addEventListener('submit', onFormSubmit);
 
 async function onFormSubmit(event) {
   event.preventDefault();
-  page += 1;
+  page = 1;
 
   searchText = event.target.elements['search-text'].value.trim();
   if (searchText === '') {
@@ -75,12 +75,12 @@ loadButton.addEventListener('click', showLoadMoreButton);
 
 async function showLoadMoreButton() {
   showElement(loader);
+  page += 1;
 
   try {
     const data = await getImagesByQuery(searchText, page);
 
     if (page * 15 >= data.totalHits) {
-      page = 1;
       hideElement(loadButton);
       iziToast.info({
         position: 'topRight',
