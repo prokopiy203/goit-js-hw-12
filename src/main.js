@@ -22,6 +22,7 @@ form.addEventListener('submit', onFormSubmit);
 
 async function onFormSubmit(event) {
   event.preventDefault();
+  page += 1;
 
   searchText = event.target.elements['search-text'].value.trim();
   if (searchText === '') {
@@ -30,6 +31,9 @@ async function onFormSubmit(event) {
       message: 'Please enter the correct query!',
       position: 'topRight',
     });
+    clearGallery();
+    hideElement(loadButton);
+    form.reset();
     return;
   }
 
@@ -46,6 +50,7 @@ async function onFormSubmit(event) {
           'Sorry, there are no images matching your search query. Please try again!',
       });
       clearGallery();
+      hideElement(loadButton);
       return;
     }
 
@@ -72,7 +77,6 @@ async function showLoadMoreButton() {
   showElement(loader);
 
   try {
-    page += 1;
     const data = await getImagesByQuery(searchText, page);
 
     if (page * 15 >= data.totalHits) {
