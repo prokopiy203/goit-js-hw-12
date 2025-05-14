@@ -94,7 +94,7 @@ async function showLoadMoreButton() {
 
     const elHeight = pictureItem.getBoundingClientRect().height;
     window.scrollBy({
-      top: Math.round(elHeight) * 3,
+      top: elHeight * 3,
       behavior: 'smooth',
     });
 
@@ -106,6 +106,5 @@ async function showLoadMoreButton() {
     });
   } finally {
     hideElement(loader);
-    form.reset();
   }
 }
